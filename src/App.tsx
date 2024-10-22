@@ -1,24 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import StoryNavigation from './components/StoryNavigation';
+import { Button } from 'antd';
 
 function App() {
+  const [showStory, setShowStory] = useState<boolean>(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      {showStory && <StoryNavigation onClose={() => setShowStory(false)} />}
+        {!showStory && <Button
+        onClick={() => setShowStory(true)}
         >
-          Learn React
-        </a>
-      </header>
+          Open Story
+        </Button>}
     </div>
   );
 }
